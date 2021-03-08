@@ -16,11 +16,11 @@ int main()
     //Fim
     if(strcmp(texto,inverso)== 0)
     {
-        printf("SIM\n");
+        printf("SIM");
     }
     else
     {
-        printf("NAO\n");
+        printf("NAO");
     }
     system("pause");
 }
@@ -30,7 +30,7 @@ char contrario(char *mensagem)
 
     for(int i = 0; int j = (mensagem.length)-1; i < mensagem.length; i++;j--)
     {
-        mensagemDois[j] = mensagem[i];
+        mensagemDois[j] = contrario(char *mensagem[i])
         j++;
     }
     mensagemDois[j] = '\0';
