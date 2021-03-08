@@ -1,0 +1,37 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <strings.h>
+
+int main()
+{
+    char texto[100], inverso[100];
+    int i,j = 0;
+    //Pegar a String
+    printf("Digite um texto: ");
+    gets(texto);
+    //inverter as posições dos caracteres
+
+    inverso[100] = contrario(*texto);
+
+    //Fim
+    if(strcmp(texto,inverso)== 0)
+    {
+        printf("SIM\n");
+    }
+    else
+    {
+        printf("NAO\n");
+    }
+    system("pause");
+}
+char contrario(char *mensagem)
+{
+    char mensagemDois[100];
+
+    for(int i = 0; int j = (mensagem.length)-1; i < mensagem.length; i++;j--)
+    {
+        mensagemDois[j] = mensagem[i];
+        j++;
+    }
+    mensagemDois[j] = '\0';
+}
