@@ -1,0 +1,168 @@
+public class Aplicacao {
+	
+	public static boolean vogal(String entrada) {
+		
+		int verificador = 0, cont;
+		boolean x1 = false;
+		char vogal[] = {'a', 'e', 'i', 'o', 'u'};
+		
+		for (int i = 0; i < entrada.length(); i++) {
+			cont = 0;
+			for(int j = 0; j < 5; j++) {
+				
+				if(entrada.charAt(i) == vogal[j] && cont == 0) {
+					verificador++;
+					cont = 1;
+				}
+			}
+		}
+		
+		if (verificador == entrada.length()) {
+			x1 = true;
+		}
+		
+		return x1;
+	}
+	
+	public static boolean consoante(String entrada) {
+		
+		int verificador = 0, cont = 0;
+		boolean x2 = false;
+		char vogal[] = {'a', 'e', 'i', 'o', 'u'};
+		
+		for (int i = 0; i < entrada.length(); i++) {
+			if(cont == 0) {
+				for(int j = 0; j < 5; j++) {
+					if(entrada.charAt(i) == vogal[j] && cont == 0) {
+						cont = 1;
+					}
+				}
+			}
+		}	
+			
+		if(cont == 0) {
+			
+			for (int i = 0; i < entrada.length(); i++) {
+				
+				if(((entrada.charAt(i) >= 'A' && entrada.charAt(i) <= 'Z') || (entrada.charAt(i) >= 'a' && 
+						entrada.charAt(i) <= 'z'))) {
+					verificador++;
+				}
+				
+			}
+			
+		}
+		
+		if (verificador == entrada.length() && cont == 0) {
+			x2 = true;
+		}
+		
+		return x2;
+	}
+	
+	public static boolean inteiro(String entrada) {
+		
+		int verificador = 0, cont = 0;
+		boolean x3 = false;
+		
+		for (int i = 0; i < entrada.length(); i++) {
+			if(cont == 0) {
+				if(((entrada.charAt(i) >= 'A' && entrada.charAt(i) <= 'Z') || (entrada.charAt(i) >= 'a' && 
+						entrada.charAt(i) <= 'z'))) {
+					cont = 1;
+				}
+			}			
+		}
+		
+		if(cont == 0) {
+			for (int i = 0; i < entrada.length(); i++) {
+				if(entrada.charAt(i) >= '0' && entrada.charAt(i) <= '9') {
+					verificador++;
+				}
+			}
+		}
+		
+		if (verificador == entrada.length() && cont == 0) {
+			x3 = true;
+		}
+		
+		return x3;
+	}
+	
+	public static boolean real(String entrada) {
+		
+		int verificador = 0, cont = 0;
+		boolean x4 = false;
+		
+		for (int i = 0; i < entrada.length(); i++) {
+			if(cont == 0) {
+				if(((entrada.charAt(i) >= 'A' && entrada.charAt(i) <= 'Z') || (entrada.charAt(i) >= 'a' && 
+						entrada.charAt(i) <= 'z'))) {
+					cont = 1;
+				}
+			}			
+		}
+		
+		if(cont == 0) {
+			for (int i = 0; i < entrada.length(); i++) {
+				if((entrada.charAt(i) >= '0' && entrada.charAt(i) <= '9') || (entrada.charAt(i) == '.' || 
+						(entrada.charAt(i) == ','))) {
+					verificador++;
+				}
+			}
+		}
+		
+		if (verificador == entrada.length() && cont == 0) {
+			x4 = true;
+		}
+		
+		return x4;
+	}
+
+	public static void main(String[] args) {
+		
+		String entrada, X1, X2, X3, X4;
+		boolean x1 = false, x2 = false, x3 = false, x4 = false;
+		
+		entrada = MyIO.readLine();
+		
+		while(!(entrada.equals("FIM"))) {
+			x1 = vogal(entrada);
+			
+			if(x1 == false) {
+				x2 = consoante(entrada);
+			}
+			
+			if(x1 == false && x2 == false) {
+				x3 = inteiro(entrada);
+				x4 = real(entrada);
+			}
+			
+			if(x1 == true) {
+				X1 = "SIM";
+			}else {
+				X1 = "NAO";
+			}
+			if(x2 == true) {
+				X2 = "SIM";
+			}else {
+				X2 = "NAO";
+			}
+			if(x3 == true) {
+				X3 = "SIM";
+			}else {
+				X3 = "NAO";
+			}
+			if(x4 == true) {
+				X4 = "SIM";
+			}else {
+				X4 = "NAO";
+			}
+			
+			MyIO.println(X1 + " " + X2 + " " + X3 + " " + X4);
+			entrada = MyIO.readLine();
+		}
+
+	}
+
+}
