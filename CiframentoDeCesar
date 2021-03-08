@@ -1,0 +1,30 @@
+public class Aplicacao {
+	
+	public static StringBuilder cifra(String entrada) {
+		StringBuilder saida = new StringBuilder();
+		
+		for (int i = 0; i < entrada.length(); i++) {
+			
+			int letraCifrada = ((int) entrada.charAt(i)) + 3;
+			
+			saida.append((char) letraCifrada);
+		}
+		return saida;
+	}
+
+	public static void main(String[] args) {
+		
+		String entrada, cifra;
+		StringBuilder saida;
+		entrada = MyIO.readLine();
+		
+		while(!(entrada.equals("FIM"))) {
+			saida = cifra(entrada);
+			cifra = saida.toString();
+			MyIO.println(cifra);
+			entrada = MyIO.readLine();
+		}
+
+	}
+
+}
