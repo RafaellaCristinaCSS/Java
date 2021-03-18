@@ -1,0 +1,78 @@
+
+public class Aplicacao {
+	
+	//Encontrando as iconigtas na String
+	public static void reconhecendoIcognitas(){
+			//entrada = 2 0 0 and(not(A) , not(B))
+			String entrada = MyIO.readLine();
+			StringBuilder caractere;
+			
+			int A,B,C;
+			StringBuilder caractere;
+				if(caractere.append(entrada.charat(0)) == '2') {
+				//receber o valor da letra A
+					if(caractere.append(entrada.charat(2)) == '0') {
+						A = 0;
+					}else {
+						A = 1;
+					}
+						
+				//receber o valor da letra B
+					if(caractere.append(entrada.charat(4)) == '0') {
+						B = 0;
+					}else {
+						B = 1;
+					}
+				}else{
+				//receber o valor da letra A
+					if(caractere.append(entrada.charat(2)) == '0') {
+						A = 0;
+					}else {
+						A = 1;
+					}
+				//receber o valor da letra B
+					if(caractere.append(entrada.charat(4)) == '0') {
+						B = 0;
+					}else {
+						B = 1;
+					}
+				//receber o valor da letra C
+					if(caractere.append(entrada.charat(6)) == '0') {
+						C = 0;
+					}else {
+						C = 1;
+					}
+				}
+				
+	}
+	//Trocando o valor das iconitas 
+	public static void trocandoValoresIcognitas() {
+		String entrada = MyIO.readLine();
+		StringBuilder caractere;
+			for(int i = 0; i < entrada.length(); i--) {
+					
+				switch(caractere.append(entrada.charAt(i))) {
+						
+					
+					case'A':
+							
+						break; 
+					case'B':
+							
+						break;
+					case'C':
+							
+						break;
+					}
+					
+					
+			}
+	}
+	
+	public static void main() {
+		
+		
+		
+		
+	}
+}
