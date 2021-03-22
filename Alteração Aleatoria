@@ -1,0 +1,43 @@
+import java.util.Random;
+
+public class Aplicacao {
+	
+	public static char aleatorio(Random gerador){
+		char letra;
+		letra = ((char)('a' + Math.abs(gerador.nextInt()) % 26));
+		return letra;
+	}
+	
+	public static String troca(String entrada, char letraA, char letraB) {
+		StringBuilder aux = new StringBuilder();
+		
+		for(int i = 0; i < entrada.length(); i++){
+			if(letraA == entrada.charAt(i)) {
+				aux.append(letraB);
+			}else {
+				aux.append(entrada.charAt(i));
+			}
+		}
+		String saida = aux.toString();
+		
+		return saida;
+	}
+
+	public static void main(String[] args) {
+		String entrada, saida;
+		char letraA, letraB;
+		Random gerador = new Random();
+		gerador.setSeed(4);
+		
+		entrada = MyIO.readLine();
+		while(!(entrada.equals("FIM"))) {
+			letraA = aleatorio(gerador);
+			letraB = aleatorio(gerador);
+			saida = troca(entrada, letraA, letraB);
+			MyIO.println(saida);
+			entrada = MyIO.readLine();
+		}	
+		
+	}
+
+}
