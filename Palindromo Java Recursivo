@@ -1,0 +1,43 @@
+public class Aplicacao {
+	
+	public static String palindromo(String entrada) {
+		StringBuilder inversor = new StringBuilder();
+		return palindromo(entrada, inversor, 0);
+	}
+	
+	private static String palindromo(String entrada, StringBuilder inversor, int i) {
+		
+		if (i < entrada.length()) {
+			
+			inversor.append(entrada.charAt(entrada.length() - i - 1));
+			palindromo(entrada, inversor, i+1);
+		}
+		
+		String inverso = inversor.toString();
+		
+		return inverso;
+	}
+
+	public static void main(String[] args) {
+		
+		String entrada, inverso;
+				
+		entrada = MyIO.readLine();
+		
+		while(!(entrada.equals("FIM"))) {
+			
+			inverso = palindromo(entrada);
+			
+			if(entrada.equals(inverso)) {
+				MyIO.println("SIM");
+			}else {
+				MyIO.println("NAO");
+			}
+			
+			entrada = MyIO.readLine();
+			
+		}
+		
+	}
+
+}
