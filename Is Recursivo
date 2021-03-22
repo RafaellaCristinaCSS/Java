@@ -1,0 +1,153 @@
+
+public class Aplicacao {
+	
+	public static boolean vogal(String entrada) {
+		
+		return vogal(entrada, 0, 0);
+	}
+	
+	private static boolean vogal(String entrada, int cont, int i) {
+		boolean x1 = false;
+		
+		if(i < entrada.length()) { 
+			if((entrada.charAt(i) == 'a' || entrada.charAt(i) == 'e' || entrada.charAt(i) == 'i' || 
+					entrada.charAt(i) == 'o' || entrada.charAt(i) == 'u') || (entrada.charAt(i) == 'A' || 
+					entrada.charAt(i) == 'E' || entrada.charAt(i) == 'I' || 
+					entrada.charAt(i) == 'O' || entrada.charAt(i) == 'U')) {
+				x1 = vogal(entrada, cont+1, i+1);
+			}else {
+				x1 = vogal(entrada, cont, i+1);
+			}
+		}
+		
+		if(cont == entrada.length()) {
+			x1 = true;
+		}
+		
+		return x1;
+	}
+	
+	public static boolean consoante(String entrada) {
+		
+		return consoante(entrada, 0, 0);
+	}
+	
+	private static boolean consoante(String entrada, int cont, int i) {
+		boolean x2 = false;
+		
+		if(i < entrada.length()) { 
+			if((((entrada.charAt(i) >= 'A') && (entrada.charAt(i) <= 'Z')) || ((entrada.charAt(i) >= 'a') && 
+					(entrada.charAt(i) <= 'z'))) && (((entrada.charAt(i) != 'a') && (entrada.charAt(i) != 'e') && 
+					(entrada.charAt(i) != 'i') && (entrada.charAt(i) != 'o') && (entrada.charAt(i) != 'u')) && 
+					((entrada.charAt(i) != 'A') && (entrada.charAt(i) != 'E') && (entrada.charAt(i) != 'I') && 
+					(entrada.charAt(i) != 'O') && (entrada.charAt(i) != 'U')))) {
+				x2 = consoante(entrada, cont+1, i+1);
+			}else {
+				x2 = consoante(entrada, cont, i+1);
+			}
+		}
+		
+		if (cont == entrada.length()) {
+			x2 = true;
+		}
+		
+		return x2;
+	}
+	
+	public static boolean inteiro(String entrada) {
+		
+		return inteiro(entrada, 0, 0);
+	}
+	
+	private static boolean inteiro(String entrada, int cont, int i) {
+		boolean x3 = false;
+		
+		if(i < entrada.length()) {
+			if(entrada.charAt(i) >= '0' && entrada.charAt(i) <= '9') {
+				x3 = inteiro(entrada, cont+1, i+1);
+			}else {
+				x3 = inteiro(entrada, cont, i+1);
+			}
+		}
+		
+		if (cont == entrada.length()) {
+			x3 = true;
+		}
+		
+		return x3;
+	}
+	
+	public static boolean real(String entrada) {
+		
+		return real(entrada, 0, 0, 0);
+	}
+	
+	private static boolean real(String entrada, int cont, int cont1, int i) {
+		boolean x4 = false;
+		
+		if(i < entrada.length()) {
+			if(((entrada.charAt(i) >= '0' && entrada.charAt(i) <= '9') || (entrada.charAt(i) == '.' || 
+					entrada.charAt(i) == ','))) {
+				if((entrada.charAt(i) == '.') || (entrada.charAt(i) == ',')) {
+					cont1++;
+				}
+				x4 = real(entrada, cont+1, cont1++, i+1);
+			}else {
+				x4 = real(entrada, cont, cont1, i+1);
+			}
+		}
+		
+		if ((cont == entrada.length()) && (cont1 <= 1)) {
+			x4 = true;
+		}
+		
+		return x4;
+	}
+
+	public static void main(String[] args) {
+		
+		String entrada, X1, X2, X3, X4;
+		boolean x1 = false, x2 = false, x3 = false, x4 = false;
+		
+		entrada = MyIO.readLine();
+		
+		while(!(entrada.equals("FIM"))) {
+			x1 = vogal(entrada);
+			
+			if(x1 == false) {
+				x2 = consoante(entrada);
+			}
+			
+			if(x1 == false && x2 == false) {
+				x3 = inteiro(entrada);
+				x4 = real(entrada);
+			}
+			
+			if(x1 == true) {
+				X1 = "SIM";
+			}else {
+				X1 = "NAO";
+			}
+			if(x2 == true) {
+				X2 = "SIM";
+			}else {
+				X2 = "NAO";
+			}
+			if(x3 == true) {
+				X3 = "SIM";
+			}else {
+				X3 = "NAO";
+			}
+			if(x4 == true) {
+				X4 = "SIM";
+			}else {
+				X4 = "NAO";
+			}
+			
+			MyIO.println(X1 + " " + X2 + " " + X3 + " " + X4);
+			entrada = MyIO.readLine();
+		}
+
+	}
+
+}
