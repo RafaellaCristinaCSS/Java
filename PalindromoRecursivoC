@@ -8,7 +8,7 @@ int main()
     int i,j = 0;
     //Pegar a String
     printf("Digite um texto: ");
-    gets(texto);
+    scanf(" %[^\n]", texto);
     //inverter as posições dos caracteres
 
     inverso[100] = contrario(*texto);
