@@ -1,0 +1,37 @@
+
+public class Aplicacao {
+	
+	public static String cifra(String entrada) {
+		StringBuilder aux = new StringBuilder();
+		return cifra(entrada, aux, 0);
+	}
+	
+	private static String cifra(String entrada, StringBuilder aux, int i) {
+		
+		if (i < entrada.length()) {
+			
+			int letraCifrada = ((int) entrada.charAt(i)) + 3;
+			aux.append((char) letraCifrada);
+			
+			cifra(entrada, aux, i+1);
+		}
+		
+		String saida = aux.toString();
+		
+		return saida; 
+	}
+
+	public static void main(String[] args) {
+		
+		String entrada, saida;
+		entrada = MyIO.readLine();
+		
+		while(!(entrada.equals("FIM"))) {
+			saida = cifra(entrada);
+			MyIO.println(saida);
+			entrada = MyIO.readLine();
+		}
+
+	}
+
+}
