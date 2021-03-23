@@ -1,75 +1,113 @@
-
 public class Aplicacao {
-	
-	//Encontrando as iconigtas na String
-	public static String reconhecendoIcognitas(String entrada, StringBuilder caractere){
-			//entrada = 2 0 0 and(not(A) , not(B))
+	public static void main() {
 			
-			int A,B,C;
-		
-				if(caractere.append(entrada.charat(0)) == '2') {
-				//receber o valor da letra A
-					if(caractere.append(entrada.charat(2)) == '0') {
-						A = 0;
-					}else {
-						A = 1;
-					}
-						
-				//receber o valor da letra B
-					if(caractere.append(entrada.charat(4)) == '0') {
-						B = 0;
-					}else {
-						B = 1;
-					}
-				}else{
-				//receber o valor da letra A
-					if(caractere.append(entrada.charat(2)) == '0') {
-						A = 0;
-					}else {
-						A = 1;
-					}
-				//receber o valor da letra B
-					if(caractere.append(entrada.charat(4)) == '0') {
-						B = 0;
-					}else {
-						B = 1;
-					}
-				//receber o valor da letra C
-					if(caractere.append(entrada.charat(6)) == '0') {
-						C = 0;
-					}else {
-						C = 1;
+		String entrada = MyIO.readLine();
+		//entrada = 2 0 0 and(not(A) , not(B))
+		int vetor[];
+		int pValorIcognita, sValorIcognita;
+		StringBuilder caractere;
+
+				//entrada = 2 0 0 and(not(A) , not(B))
+				int tamanhoPalavra = entrada.length() - 1;
+				for(int i = tamanhoPalavra; i >= 0; i++){
+					caractere = entrada.charAt(i);
+					switch (caractere) {
+						case t:
+							pValorIcognita = verificarIcognita(caractere[i+2], entrada);
+							metodoNot(pValorIcognita);
+							break;
+						case r:
+							pValorIcognita = verificarIcognita(caractere[i+2], entrada);
+							sValorIcognita = verificarIcognita(caractere[i+6], entrada);
+							metodoOr(pValorIcognita, sValorIcognita);
+							break;
+						case d:
+							metodoAnd();
+							break;
+						default:
+							break;
 					}
 				}
-				
 	}
-	//Trocando o valor das iconitas 
-	public static String trocandoValoresIcognitas(String entrada, StringBuilder caractere) {
-			int A,B,C;
+
+	public static int metodoNot(int pIcognita) {
+		int novaIcognita;
+		if (pIcognita == 0){
+			novaIcognita = 1;
+		} else {
+			novaIcognita = 0;
+		}
+		return novaIcognita;
+	}
+	public static int metodoOr(int pIcognita, int sIcognita) {
+		int novaIcognita;
+		if(pIcognita == 0 && sIcognita == 0){
+			novaIcognita = 0;
+		}else if(pIcognita == 0 && sIcognita == 1){
+			novaIcognita = 1;
+		}else if(pIcognita == 1 && sIcognita == 0){
+			novaIcognita = 1;
+		}else{ //pIcognita == 1 && sIcognita == 1
+			novaIcognita = 1;
+		}
+		return novaIcognita;
+	}
+	public static int metodoAnd(int pIcognita, int sIcognita) {
+		int novaIcognita;
+		if(pIcognita == 0 && sIcognita == 0){
+			novaIcognita = 0;
+		}else if(pIcognita == 0 && sIcognita == 1){
+			novaIcognita = 0;
+		}else if(pIcognita == 1 && sIcognita == 0){
+			novaIcognita = 0;
+		}else{ //pIcognita == 1 && sIcognita == 1
+			novaIcognita = 1;
+		}
+		return novaIcognita;
+	}
 			
-			for(int i = 0; i < entrada.length(); i--)
-			{//entrada = 2 0 0 and(not(A) , not(B))
-				switch(caractere.append(entrada.charAt(i))) {
-					
-					case'A':
-						A = 
-						break; 
-					case'B':
-							
-						break;
-					case'C':
-							
-						break;
-					}		
-			}
-	}
-	
-	public static void main() {
+	public static int verificarIcognita(StringBuilder caractere, String entrada){
+		int qualRetornar;
+		int vetorTeste[];
+		int A,B,C;
+		//receber o valor da letra A
 		
-		String entrada = MyIO.readLine();
-		StringBuilder caractere;
-		
-		trocandoValoresIcognitas(entrada, caractere);
-		
+		if(caractere == 'A'){
+				if(caractere.append(entrada.charAt(2)) == '0') {
+					A = 0;
+				}else {
+					A = 1;
+				}
+				qualRetornar = 0;
+		}else if(caractere == 'B'){
+			//receber o valor da letra B
+				if(caractere.append(entrada.charAt(4)) == '0') {
+					B = 0;
+				}else {
+					B = 1;
+				}	
+				qualRetornar = 1;
+		}else{	
+			//receber o valor da letra C
+				if(caractere.append(entrada.charAt(6)) == '0') {
+					C = 0;
+				}else {
+					C = 1;
+				}
+				qualRetornar = 2;
+		}
+		switch (qualRetornar) {
+			case 0:
+				return A;
+				break;
+			case 1:
+				return B;
+				break;
+			case 2:
+				return C;
+				break;
+			default:
+				break;
+		}
 	}
 }
