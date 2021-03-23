@@ -22,7 +22,9 @@ public class Aplicacao {
 							metodoOr(pValorIcognita, sValorIcognita);
 							break;
 						case d:
-							metodoAnd();
+							pValorIcognita = verificarIcognita(caractere[i+2], entrada);
+							sValorIcognita = verificarIcognita(caractere[i+6], entrada);
+							metodoAnd(pValorIcognita, sValorIcognita);
 							break;
 						default:
 							break;
