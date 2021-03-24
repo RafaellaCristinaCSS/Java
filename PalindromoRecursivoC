@@ -7,24 +7,22 @@ int main()
     char texto[100], inverso[100];
     int i,j = 0;
     //Pegar a String
-    printf("Digite um texto: ");
-    scanf(" %[^\n]", texto);
-    //inverter as posições dos caracteres
 
-    inverso[100] = contrario(*texto);
-
-    //Fim
-    if(strcmp(texto,inverso)== 0)
-    {
-        printf("SIM");
-    }
-    else
-    {
-        printf("NAO");
-    }
+    do{
+        scanf(" %[^\n]", texto);
+        inverso[100] = contrario(texto[100]);
+        if(strcmp(texto,inverso)== 0)
+        {
+            printf("SIM");
+        }
+        else
+        {
+            printf("NAO");
+        }
+    }while(texto != "FIM");
     system("pause");
 }
-char contrario(char *mensagem)
+char contrario(char mensagem[])
 {
     char mensagemDois[100];
 
